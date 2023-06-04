@@ -687,5 +687,18 @@
         "uri": "https://storage.googleapis.com/exoplayer-test-media-1/mp4/frame-counter-one-hour.mp4"
       }
     ]
+  },
+  {
+    "name" : "Youtube Test suite",
+    "samples" : [
+      {
+        "name": "Random first test",
+        "uri": "https://storage.googleapis.com/ytlr-cert.appspot.com/test-materials/media/high-bitrate/concat/sdr-fps-30/video10_137_h264_1920x1080_fps%3D30_bitrate_kbps%3D19021k.mp4"
+      },
+      {
+        "name" : "A bit heavy test",
+        "uri" : "https://storage.googleapis.com/ytlr-cert.appspot.com/test-materials/media/high-bitrate/sdr-drm/video10_h264_fps%3D30.0_bitrate_kbps%3D18994.589.enc"
+      }
+    ]
   }
 ]
