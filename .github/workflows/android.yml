@@ -33,3 +33,10 @@ jobs:
     - name: Releasing
       if: startsWith(github.ref, 'refs/tags/v')
       run: echo should release
+    - name: Upload the artifacts
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: skx/github-action-publish-binaries@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: 'demos/main/buildout/outputs/apk/noDecoderExtensions/release/*.apk'
