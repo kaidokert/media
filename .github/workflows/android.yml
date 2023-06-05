@@ -32,10 +32,12 @@ jobs:
       with:
         name: APKs
         path: demos/main/buildout/outputs/apk
-    - name: Upload the artifacts
+    - name: Upload the APKs to a release
       if: ${{ github.event_name == 'release' }}
       uses: skx/github-action-publish-binaries@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        args: 'demos/main/buildout/outputs/apk/noDecoderExtensions/release/*.apk'
+        args: |
+          demos/main/buildout/outputs/apk/noDecoderExtensions/release/*.apk
+          demos/main/buildout/outputs/apk/withDecoderExtensions/release/*.apk
