@@ -17,6 +17,7 @@ package androidx.media3.exoplayer.util;
 
 import android.annotation.SuppressLint;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.TextView;
 import androidx.media3.common.Format;
 import androidx.media3.common.Player;
@@ -208,6 +209,9 @@ public class DebugTextViewHelper {
     @Override
     public void onPlaybackStateChanged(@Player.State int playbackState) {
       updateAndPost();
+      if (playbackState == Player.STATE_ENDED) {
+        Log.i("DemoVideoStats",getVideoString());
+      }
     }
 
     @Override
