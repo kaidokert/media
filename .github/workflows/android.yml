@@ -1,6 +1,8 @@
 name: Android CI
 
 on:
+  release:
+    types: [created]
   push:
     branches: [ "release" ]
     tags: [ 'v*' ]
@@ -30,6 +32,12 @@ jobs:
       with:
         name: APKs
         path: demos/main/buildout/outputs/apk
-    - name: Releasing
-      if: startsWith(github.ref, 'refs/tags/v')
-      run: echo should release
+    - name: Upload the APKs to a release
+      if: ${{ github.event_name == 'release' }}
+      uses: skx/github-action-publish-binaries@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: |
+          demos/main/buildout/outputs/apk/noDecoderExtensions/release/*.apk
+          demos/main/buildout/outputs/apk/withDecoderExtensions/release/*.apk
